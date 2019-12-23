@@ -6,4 +6,7 @@ class Wall(GameObject) :
     
     def draw(self):
         from engine import Engine
-        Engine.win.blit(self.sprite.sp, (self.x, self.y))
+        Engine.instance.win.blit(self.sprite.sp, (self.x, self.y))
+
+    def id(self):
+        return 'Wall'

@@ -1,7 +1,7 @@
 class State():
     def __init__(self):
         self.go_list = []
-
+    
     def add_go(self, go):
         self.go_list.append(go)
     

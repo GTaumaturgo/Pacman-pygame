@@ -11,14 +11,14 @@ class Pacman(GameObject):
 
     def draw(self):
         from engine import Engine
-        Engine.win.blit(self.sprite.sp, (self.x, self.y))
+        Engine.instance.win.blit(self.sprite.sp, (self.x, self.y))
 
     def get_collider_candidates(self, newy, newx, dir):
         from engine import Engine
         upper_left = (newy, newx)
-        upper_right = (newy, newx + Engine.block_size - 1)
-        lower_left = (newy + Engine.block_size - 1, newx)
-        lower_right = (newy + Engine.block_size - 1, newx + Engine.block_size - 1)
+        upper_right = (newy, newx + Engine.instance.block_size - 1)
+        lower_left = (newy + Engine.instance.block_size - 1, newx)
+        lower_right = (newy + Engine.instance.block_size - 1, newx + Engine.instance.block_size - 1)
         if dir == (0,1):
             return (upper_right, lower_right) 
         elif dir == (1,0):
@@ -34,11 +34,11 @@ class Pacman(GameObject):
         if dir == (0,0):
             return False
         pointA, pointB = self.get_collider_candidates(newy, newx, dir)
-        blockA = (pointA[0]//Engine.block_size, pointA[1]//Engine.block_size)
-        blockB = (pointB[0]//Engine.block_size, pointB[1]//Engine.block_size)
+        blockA = (pointA[0]//Engine.instance.block_size, pointA[1]//Engine.instance.block_size)
+        blockB = (pointB[0]//Engine.instance.block_size, pointB[1]//Engine.instance.block_size)
 
-        return (Engine.map[blockA[0]][blockA[1]] == 'Wall'
-            or Engine.map[blockB[0]][blockB[1]] == 'Wall')
+        return (Engine.instance.map[blockA[0]][blockA[1]] == 'Wall'
+            or Engine.instance.map[blockB[0]][blockB[1]] == 'Wall')
 
     def update(self):
         keys = pygame.key.get_pressed()
@@ -63,6 +63,8 @@ class Pacman(GameObject):
             self.y = newy
             self.x = newx
 
+    def id(self):
+        return 'Pacman'
 
 
         

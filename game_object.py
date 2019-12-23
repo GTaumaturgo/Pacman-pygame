@@ -16,3 +16,5 @@ class GameObject():
 
     def draw(self):
         raise MethodNotImplementedException
+
+    
