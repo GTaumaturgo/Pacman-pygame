@@ -4,6 +4,7 @@ from pacman import Pacman
 from wall import Wall
 from ghost import Ghost
 
+
 class Engine:
     class __Engine():
         def __init__(self, win):
@@ -17,8 +18,8 @@ class Engine:
             return self.state_stack[-1]
 
         def check_quit(self):
-            for event in pygame.event.get() :
-                if event.type == pygame.QUIT : 
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
                     self.quit_requested = True
 
         def load_map(self, game_state):
